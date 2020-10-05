@@ -1,24 +1,20 @@
 import React from 'react';
-import logo from './logo.svg';
+// import logo from './logo.svg';
 import './App.css';
+// import firebase from './firebase'
+// eslint-disable-next-line no-unused-vars
+import MessagesList from './messages-list'
+// firebase.firestore().collection('users').add({
+//   title: 'Ola',
+//   messsages: 2
+// })
 
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1> Make friendship board</h1>
+      <MessagesList/>
     </div>
   );
 }
