@@ -1,21 +1,25 @@
+/* eslint-disable no-unused-vars */
 import React from 'react';
-// import logo from './logo.svg';
 import './App.css';
-// import firebase from './firebase'
-// eslint-disable-next-line no-unused-vars
 import MessagesList from './messages-list'
-// firebase.firestore().collection('users').add({
-//   title: 'Ola',
-//   messsages: 2
-// })
+// import 'bootstrap/dist/css/bootstrap.min.css';
+// import { Button, Navbar, Nav, NavItem, NavDropdown, MenuItem } from 'react-bootstrap';
+import { BrowserRouter as Router, Route} from 'react-router-dom'
+import Home from "./components/Home";
+import About from "./components/About";
+import Completed from "./components/Completed";
+import Nav from "./components/Nav";
 
 function App() {
 
   return (
-    <div className="App">
-      <h1> Make friendship board</h1>
-      <MessagesList/>
-    </div>
+        <Router>
+  {/* <Nav className="justify-content-center" activeKey="/home"/> */}
+      <Route path="/" component={Nav} />
+      <Route exact path= "/" component={Home} />
+      <Route path= "/about" componenet={About} />
+      <Route path="/completed" componenet={Completed} />
+      </Router>
   );
 }
 

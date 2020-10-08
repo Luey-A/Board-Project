@@ -3,10 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import db from './firebaseConfig'
 
-
-
 export default function MessagesList() {
-    const [header, setHeader] = useState ('initial');
+    const [header, setHeader] = useState ("");
     const [name, setName] = useState("");
     const [value, onChange] = useState(new Date());
     const [event, setEvent] = useState("");
@@ -61,7 +59,7 @@ export default function MessagesList() {
                 <div>
                     <label>
                         Due date:
-                    <DatePicker
+                    <DatePicker 
                         onChange={onChange}
                         value={value}
                     />
