@@ -3,7 +3,7 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import db from "../../firebaseConfig";
 
-export default function EventForm() {
+export default function EventForm(props, handler) {
   const [header, setHeader] = useState("");
   const [name, setName] = useState("");
   const [value, onChange] = useState(new Date());
@@ -14,14 +14,28 @@ export default function EventForm() {
 
   const addUser = (e) => {
     e.preventDefault();
-    db.collection("users").doc().set({
-      fullName: name,
-      chooseDate: value,
-      addEvent: event,
-      addDescription: description,
-      addCollaborators: collaborators,
-      chooseCompleted: completed,
-    });
+    if (props.id){
+      db.collection("users").doc(props.id).set({
+        fullName: name,
+        chooseDate: value,
+        addEvent: event,
+        addDescription: description,
+        addCollaborators: collaborators,
+        chooseCompleted: completed,
+      });
+      props.handleSubmit();
+      } else {
+        db.collection("users").doc().set({
+          fullName: name,
+          chooseDate: value,
+          addEvent: event,
+          addDescription: description,
+          addCollaborators: collaborators,
+          chooseCompleted: completed,
+        });      
+      }
+      console.log(props);
+      
     setName("");
     onChange(new Date());
     setEvent("");
@@ -40,7 +54,7 @@ export default function EventForm() {
             <input
               type="text"
               name="name"
-              placeholder="Full name"
+              placeholder= {props.fullName ? props.fullName: "Full name"}
               onChange={(e) => setName(e.target.value)}
               value={name}
             />
@@ -49,7 +63,7 @@ export default function EventForm() {
         <div>
           <label>
             Due date:
-            <DatePicker onChange={onChange} value={value} />
+            <DatePicker onChange={onChange} value={value}/>
           </label>
         </div>
         <div>
@@ -58,7 +72,7 @@ export default function EventForm() {
             <input
               type="text"
               name="event"
-              placeholder="Event name"
+              placeholder= {props.addEvent ? props.addEvent: "Event name"}
               onChange={(e) => setEvent(e.target.value)}
               value={event}
             />
@@ -70,7 +84,7 @@ export default function EventForm() {
             <input
               type="text"
               name="description"
-              placeholder="Event description"
+              placeholder= {props.addDescription ? props.addDescription: "Add description"}
               onChange={(e) => setDescription(e.target.value)}
               value={description}
             />
@@ -82,7 +96,7 @@ export default function EventForm() {
             <input
               type="text"
               name="collaborators"
-              placeholder="Persons collaborating"
+              placeholder= {props.addCollaborators ? props.addCollaborators: "Add collaborators"}
               onChange={(e) => setCollaborators(e.target.value)}
               value={collaborators}
             />

@@ -20,17 +20,6 @@ const Home = () => {
             { ...change.doc.data(), id: change.doc.id },
           ]);
         } else if (change.type === "removed") {
-          // const arrayOfObjects = [
-          //   {
-          //     id: 12413,
-          //   },
-          //   { id: 1242 },
-          //   { id: 123124124 },
-          // ];
-          // console.log(arrayOfObjects[2].id);
-          // const id = 1242;
-          // const newArray = arrayOfObjects.filter((object) => object.id !== id);
-
           setEvents((prevState) => {
             const stateCopy = [...prevState];
             const filteredArray = stateCopy.filter(
@@ -39,10 +28,23 @@ const Home = () => {
             return filteredArray;
           });
         } else if (change.type === "modified") {
+          console.log(change.doc.data());
+          setEvents((prevState) => {
+            const stateCopy = [...prevState];
+            const filteredArray = stateCopy.map((event) => { if (event.id === change.doc.id) {
+              return event = { ...change.doc.data(), id: change.doc.id }
+              } else {
+                return event
+              }
+            });
+            console.log(filteredArray);
+            return filteredArray;
+          });
+          // setEvents([...change.doc.data(), id: change.doc.id ]),
         }
       });
     });
-  };
+    }
 
   console.log(events);
 
