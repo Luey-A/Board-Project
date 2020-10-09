@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import db from './firebaseConfig'
+import db from '../../firebaseConfig'
 
 export default function MessagesList() {
     const [header, setHeader] = useState ("");

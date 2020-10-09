@@ -1,11 +1,11 @@
 import React from 'react';
-import MessagesList from '../../messages-list'
+import Eventform from '../Eventform'
 
 const Home = () => {
     return (
         <div className="App">
       <h1>Events board</h1>
-      <MessagesList/>
+      <Eventform/>
     </div>
     )
 };
