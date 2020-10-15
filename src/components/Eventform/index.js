@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import db from "../../firebaseConfig";
@@ -6,7 +6,8 @@ import db from "../../firebaseConfig";
 export default function EventForm(props, handler) {
   const [header, setHeader] = useState("");
   const [name, setName] = useState("");
-  const [value, onChange] = useState(new Date());
+  const [category, setCategory] = useState("work");
+  const [eventDate, setEventDate] = useState(new Date());
   const [event, setEvent] = useState("");
   const [description, setDescription] = useState("");
   const [collaborators, setCollaborators] = useState("");
@@ -17,7 +18,8 @@ export default function EventForm(props, handler) {
     if (props.id){
       db.collection("users").doc(props.id).set({
         fullName: name,
-        chooseDate: value,
+        category: category,
+        chooseDate: eventDate,
         addEvent: event,
         addDescription: description,
         addCollaborators: collaborators,
@@ -27,21 +29,25 @@ export default function EventForm(props, handler) {
       } else {
         db.collection("users").doc().set({
           fullName: name,
-          chooseDate: value,
+          category: category,
+          chooseDate: eventDate,
           addEvent: event,
           addDescription: description,
           addCollaborators: collaborators,
           chooseCompleted: completed,
+        
         });      
       }
       console.log(props);
       
     setName("");
-    onChange(new Date());
+    setCategory("");
+    setEventDate(new Date());
     setEvent("");
     setDescription("");
     setCollaborators("");
     setCompleted(false);
+    setHeader("")
   };
 
   return (
@@ -61,9 +67,21 @@ export default function EventForm(props, handler) {
           </label>
         </div>
         <div>
+          <label>Category:</label>
+          <select onChange= {(e) => setCategory(e.target.value)} value={category}>
+            <option value="work">Work</option>
+            <option value="study">Study</option>
+            <option value="entertainment">Entertainment</option>
+          </select>
+          {/*
+            placeholder= {props.category ? props.category: "Category"}
+          onChange={(e) => setCategory(e.target.value)}
+          value={category} */}
+        </div>
+        <div>
           <label>
             Due date:
-            <DatePicker onChange={onChange} value={value}/>
+            <DatePicker onChange={setEventDate} selected={eventDate}/>
           </label>
         </div>
         <div>

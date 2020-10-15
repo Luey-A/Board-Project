@@ -31,8 +31,9 @@ const Home = () => {
           console.log(change.doc.data());
           setEvents((prevState) => {
             const stateCopy = [...prevState];
-            const filteredArray = stateCopy.map((event) => { if (event.id === change.doc.id) {
-              return event = { ...change.doc.data(), id: change.doc.id }
+            const filteredArray = stateCopy.map((event) => {
+              if (event.id === change.doc.id) {
+                return { ...change.doc.data(), id: change.doc.id }
               } else {
                 return event
               }
@@ -51,12 +52,31 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, []);
-
+  const sortByCategory = (ascending) => {
+    const compare = ( a, b ) => {
+      if ( a.category < b.category ){
+        return -1;
+      }
+      if ( a.category > b.category ){
+        return 1;
+      }
+      return 0;
+    }
+    events.sort(compare);
+    setEvents(events.slice());
+  }
+  
   return (
     <div className="App">
       <h1>Events board</h1>
 
       <Eventform />
+      <button onClick={() => sortByCategory(true)}>
+        Sort by category ascending
+      </button>
+      <button onClick={() => sortByCategory(false)}>
+        Sort by category ascending
+      </button>
       <Events events={events} />
     </div>
   );
