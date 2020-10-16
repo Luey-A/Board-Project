@@ -85,7 +85,7 @@ const Home = () => {
     <div className="App">
       <h1>Events board</h1>
       <div>
-      <button onClick={()=> setDisplay(!display)}>{!display? "Add Event" : "Hide"} </button>
+      <button onClick={()=> setDisplay(!display)} style={{margin:'1rem'}}>{!display? "Add Event" : "Hide"} </button>
       {display&& <Eventform />}
       </div>
       <button onClick={() => sortByCategoryAscending (true)}

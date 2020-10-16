@@ -11,7 +11,7 @@ const NavBar1 = () => {
   return (
     <Navbar  bg="light" variant="light">
     
-    <Navbar.Brand href="#home"><img src="/image/logo.jpg" alt="logo" width= "110px" ></img></Navbar.Brand>
+    <Navbar.Brand href="#home"><img src="/image/logo.jpg" alt="logo" width= "150px" ></img></Navbar.Brand>
     
     <Nav className="mr-auto">
     <Nav.Link href="/">Home</Nav.Link>
