@@ -28,15 +28,11 @@ export default function Event(props) {
   // console.log(JSON.stringify(toDateTime(props.event.chooseDate.seconds)));
   // console.log(typeof (toDateTime(props.event.chooseDate.seconds)));
   return (
-    [
-      'Info',
-      'Light',
-      'Dark',
-    ].map((variant, idx) => (
+ 
       <Card
-        bg={variant.toLowerCase()}
-        key={idx}
-        text={variant.toLowerCase() === 'light' ? 'dark' : 'white'}
+        bg={props.variant.toLowerCase()}
+        // key={idx}
+        text={props.variant.toLowerCase() === 'light' ? 'info': 'white'}
         style={{ width: '18rem', textAlign: 'left', float:'left', margin:'1rem'}}
         className="mb-2"
       >
@@ -54,13 +50,11 @@ export default function Event(props) {
         
           {isDisplayForm && <EventForm {...props.event} handleSubmit = {handleSubmit}/>}
           <button onClick={deleteEvent} style={{margin:'1rem'}}>Delete event</button>
-          <button onClick={editEvent}>Edit event</button>
+          {!props.event.chooseCompleted &&<button onClick={editEvent}>Edit event</button> }
           </Card.Text>
         </Card.Body>
       </Card>
-    ))
- 
-  );
+   );
   }
  // <div>
   //     <div style={{ border: "1px solid red", width: "300px" }}>

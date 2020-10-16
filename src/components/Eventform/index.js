@@ -75,10 +75,7 @@ export default function EventForm(props, handler) {
             <option value="study">Study</option>
             <option value="entertainment">Entertainment</option>
           </select>
-          {/*
-            placeholder= {props.category ? props.category: "Category"}
-          onChange={(e) => setCategory(e.target.value)}
-          value={category} */}
+
         </div>
         <div>
           <label>
@@ -128,7 +125,7 @@ export default function EventForm(props, handler) {
               type="radio"
               name="radiobutton"
               onChange={(e) => setCompleted(e.target.value)}
-              value={completed}
+              value={!completed}
               checked={null}
             />
             <label> Completed </label>
@@ -137,7 +134,7 @@ export default function EventForm(props, handler) {
             <input
               type="radio"
               name="radiobutton"
-              value="Not Completed"
+              value={completed}
               onChange={(e) => setCompleted(e.target.value)}
             />
             <label> Not Completed </label>

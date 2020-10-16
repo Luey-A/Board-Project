@@ -5,6 +5,7 @@ import db from "../../firebaseConfig";
 
 const Home = () => {
   const [events, setEvents] = useState([]);
+  const [display, setDisplay] = useState(false);
 
   const fetchData = async () => {
     const res = await db.collection("demo").doc("header").get();
@@ -52,7 +53,7 @@ const Home = () => {
   useEffect(() => {
     fetchData();
   }, []);
-  const sortByCategory = (ascending) => {
+  const sortByCategoryAscending = (ascending) => {
     const compare = ( a, b ) => {
       if ( a.category < b.category ){
         return -1;
@@ -65,17 +66,35 @@ const Home = () => {
     events.sort(compare);
     setEvents(events.slice());
   }
-  
+
+  const sortByCategoryDescending = (descending) => {
+    const compare = ( a, b ) => {
+      if ( a.category > b.category ){
+        return -1;
+      }
+      if ( a.category < b.category ){
+        return 1;
+      }
+      return 0;
+    }
+    events.sort(compare);
+    setEvents(events.slice());
+  }
+
   return (
     <div className="App">
       <h1>Events board</h1>
-
-      <Eventform />
-      <button onClick={() => sortByCategory(true)}>
+      <div>
+      <button onClick={()=> setDisplay(!display)}>{!display? "Add Event" : "Hide"} </button>
+      {display&& <Eventform />}
+      </div>
+      <button onClick={() => sortByCategoryAscending (true)}
+      style={{margin:'1rem'}}>
         Sort by category ascending
       </button>
-      <button onClick={() => sortByCategory(false)}>
-        Sort by category ascending
+      <button onClick={() => sortByCategoryDescending (false)}
+       style={{margin:'1rem'}}>
+        Sort by category descending
       </button>
       <Events events={events} />
     </div>

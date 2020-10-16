@@ -4,34 +4,50 @@ import React from "react";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from "react-router-dom";
+import context from "react-bootstrap/esm/AccordionContext";
 
 
 const NavBar1 = () => {
   return (
-   <Nav bg="light" expand="lg">
-     <Nav.Item>
-      <img src="/image/logo.jpg" alt="logo" width= "90px" ></img>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="   "></Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="   "></Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="   "></Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/">Home</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/about">About</Nav.Link>
-      </Nav.Item>
-      <Nav.Item>
-        <Nav.Link href="/completed">Completed</Nav.Link>
-      </Nav.Item>
+    <Navbar  bg="light" variant="light">
+    
+    <Navbar.Brand href="#home"><img src="/image/logo.jpg" alt="logo" width= "110px" ></img></Navbar.Brand>
+    
+    <Nav className="mr-auto">
+    <Nav.Link href="/">Home</Nav.Link>
+    <Nav.Link href="/about">About</Nav.Link>
+    <Nav.Link href="/completed">Completed</Nav.Link>
+    </Nav>
+  </Navbar>
+
+  //  <Nav bg="light" expand="lg">
+  //    <Nav.Item>
+  //     <img src="/image/logo.jpg" alt="logo" width= "110px" ></img>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="   "></Nav.Link>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="   "></Nav.Link>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="   "></Nav.Link>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="/">Home</Nav.Link>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="/">Home</Nav.Link>
+  //     </Nav.Item>
+  //     <Nav.Item>
+  //       <Nav.Link href="/completed">Completed</Nav.Link>
+  //     </Nav.Item>
+
+  //     <Nav.Item>
+  //       <button style={{display: 'flex', justifyContent: 'right', margin:'1rem'}}>display type</button>
+  //     </Nav.Item>
       
-      </Nav>
+  //     </Nav>
     
   )
 };
