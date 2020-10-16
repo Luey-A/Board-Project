@@ -52,7 +52,9 @@ export default function EventForm(props, handler) {
 
   return (
     <div>
-      <h1>{header}</h1>
+      {/* <div>
+      <button style={{margin:'1rem'}} onClick={EventForm}>Add Event</button>
+      </div> */}
       <form onSubmit={addUser}>
         <div>
           <label>
