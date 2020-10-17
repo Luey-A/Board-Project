@@ -14,7 +14,7 @@ export default function Events(props) {
          variant ="info"
        }
 
-        return !event.chooseCompleted && <Event event={event} variant={variant} />;
+        return event.chooseCompleted === false && <Event event={event} variant={variant} />;
       })}
     </div>
   );
