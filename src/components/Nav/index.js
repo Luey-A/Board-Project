@@ -3,8 +3,8 @@ import React from "react";
 // import logo from "./logo.png";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Navbar, Nav } from 'react-bootstrap';
-import { Link } from "react-router-dom";
-import context from "react-bootstrap/esm/AccordionContext";
+// import { Link } from "react-router-dom";
+// import context from "react-bootstrap/esm/AccordionContext";
 
 
 const NavBar1 = () => {

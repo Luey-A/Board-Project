@@ -2,6 +2,7 @@ import React, { useState} from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import db from "../../firebaseConfig";
+import { Card, CardDeck} from 'react-bootstrap';
 
 export default function EventForm(props, handler) {
   const [header, setHeader] = useState("");
@@ -52,10 +53,18 @@ export default function EventForm(props, handler) {
 
   return (
     <div>
-      {/* <div>
-      <button style={{margin:'1rem'}} onClick={EventForm}>Add Event</button>
-      </div> */}
+     
       <form onSubmit={addUser}>
+      <Card
+        bg= 'light'
+        
+        text= 'info'
+        style={{ width: '21rem', textAlign: 'left', margin:'1rem'}}
+        className="mb-2"
+      >
+        <Card.Header> Add Event </Card.Header>
+        <Card.Body>
+          <Card.Text>
         <div>
           <label>
             Name:
@@ -143,6 +152,9 @@ export default function EventForm(props, handler) {
         <div>
           <input type="submit" value="Submit" />
         </div>
+        </Card.Text>
+        </Card.Body>
+      </Card>
       </form>
     </div>
   );

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Eventform from "../Eventform";
 import Events from "../Events";
 import db from "../../firebaseConfig";
+import { Button } from 'react-bootstrap';
 
 const Home = () => {
   const [events, setEvents] = useState([]);
@@ -83,19 +84,19 @@ const Home = () => {
 
   return (
     <div className="App">
-      <h1>Events board</h1>
+      <h1 style = {{ color: "#E76962"}}>Events board</h1>
       <div>
-      <button onClick={()=> setDisplay(!display)} style={{margin:'1rem'}}>{!display? "Add Event" : "Hide"} </button>
-      {display&& <Eventform />}
+      <Button variant="outline-info" onClick={()=> setDisplay(!display)} style={{margin:'1rem'}}>{!display? "Add Event" : "Hide"} </Button>
+      {display&& <div style={{ display: 'flex', justifyContent: 'center', textAlign: 'center', margin:'1rem'}}> <Eventform /> </div>}
       </div>
-      <button onClick={() => sortByCategoryAscending (true)}
+      <Button variant="outline-info" onClick={() => sortByCategoryAscending (true)}
       style={{margin:'1rem'}}>
         Sort by category ascending
-      </button>
-      <button onClick={() => sortByCategoryDescending (false)}
+      </Button>
+      <Button variant="outline-info" onClick={() => sortByCategoryDescending (false)}
        style={{margin:'1rem'}}>
         Sort by category descending
-      </button>
+      </Button>
       <Events events={events} />
     </div>
   );

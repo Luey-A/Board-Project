@@ -24,6 +24,7 @@ export default function Completed() {
 
     return (
         <div>
+          <h1 style = {{ color: "#E76962" , textAlign: "center"}}>Completed events</h1>
          {events.map((event, index) => {
              let variant = ""
              if(index%2===0){
