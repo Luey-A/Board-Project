@@ -1,3 +1,22 @@
+# General info?
+This project was one of the projects i have completed with one of the students from Re:Coded Front-End Web Development Bootcamp that i have attended in 2020.
+The project was to create a space for friends, colleagues, random people to share their events and connect through this board. Moreover, it is a tool to help the users manage their events through having a card for each task they need to do and set it to complete when it is finished.
+
+# Technologies used
+- JavaScript (React)
+- HTML
+- CSS
+- Bootstrap
+- Firebase for storing user data
+
+# Table of contents
+- Homepage
+- Completed events
+- About
+
+# Project status
+Completed
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
